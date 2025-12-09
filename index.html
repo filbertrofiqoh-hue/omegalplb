@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Omega Elektronik Palembang</title>
+  <style>
+    :root{--blue:#d9f0ff;--accent:#0b5f8a;--dark:#0b2433;--card:#ffffff}
+    *{box-sizing:border-box;font-family:Inter, system-ui, Arial}
+    body{margin:0;background:linear-gradient(180deg,var(--blue),#ffffff);color:var(--dark)}
+    header{background:transparent;text-align:center;padding:28px 16px;border-bottom:1px solid rgba(11,36,51,0.06)}
+    .brand{display:flex;flex-direction:column;align-items:center;gap:8px}
+    .brand img{width:110px;height:110px;object-fit:contain}
+    .brand h1{margin:0;font-size:28px;font-weight:800;letter-spacing:0.5px}
+    .brand p{margin:0;font-style:italic;font-weight:700;color:rgba(11,36,51,0.88)}
+
+    /* Official brands row */
+    .brands-row{display:flex;gap:20px;overflow:auto;padding:12px 24px;align-items:center;scrollbar-width:none}
+    .brands-row::-webkit-scrollbar{display:none}
+    .brand-item{min-width:100px;display:flex;align-items:center;justify-content:center}
+    .brand-item img{height:48px;opacity:.95}
+
+    /* Promo slider full screen */
+    .slider{position:relative;height:56vh;max-height:520px;margin:18px 0;overflow:hidden}
+    .slides{display:flex;height:100%;transition:transform .6s ease}
+    .slide{min-width:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,rgba(11,92,138,0.06),rgba(11,36,51,0.02));padding:20px}
+    .slide .content{max-width:1100px;width:100%;display:flex;gap:24px;align-items:center}
+    .slide img{width:420px;max-width:40%;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 8px 30px rgba(11,36,51,0.08)}
+    .slide .info{flex:1}
+    .slide h2{margin:0;font-size:26px}
+    .slide p{margin:8px 0 16px}
+    .slider-nav{position:absolute;left:12px;right:12px;bottom:12px;display:flex;justify-content:center;gap:8px}
+    .dot{width:12px;height:12px;border-radius:50%;background:rgba(11,36,51,0.12);cursor:pointer}
+    .dot.active{background:var(--accent)}
+
+    /* Categories */
+    .categories{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:24px}
+    .cat{background:var(--card);padding:18px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;box-shadow:0 6px 18px rgba(11,36,51,0.06);cursor:pointer}
+    .cat img{width:64px;height:64px;object-fit:contain;animation:float 3s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+    .cat h3{margin:0;font-size:16px;font-weight:700}
+
+    /* Products grid */
+    .products{padding:18px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .product{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(11,36,51,0.04);display:flex;flex-direction:column;gap:10px}
+    .product img{width:100%;height:180px;object-fit:contain;border-radius:8px}
+    .product .title{font-weight:700}
+    .product .price{color:var(--accent);font-weight:800}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:var(--accent);color:white;text-decoration:none;font-weight:700}
+
+    /* Added value section */
+    .added{background:linear-gradient(180deg,#fff,#f5fcff);padding:24px;margin:18px;border-radius:12px;text-align:center}
+    .added .items{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
+    .added .item{width:260px;background:white;padding:14px;border-radius:10px;box-shadow:0 6px 18px rgba(11,36,51,0.04)}
+    .added .item img{height:48px}
+
+    /* Payments & marketplaces */
+    .payments, .marketplace{display:flex;gap:14px;align-items:center;justify-content:center;padding:12px}
+    .payments img, .marketplace img{height:40px}
+
+    footer{padding:18px;background:linear-gradient(180deg,transparent,#e8f8ff);display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
+    .contact{max-width:540px}
+
+    @media(max-width:1000px){.products{grid-template-columns:repeat(2,1fr)}.categories{grid-template-columns:repeat(2,1fr)}.slide img{display:none}}
+    @media(max-width:600px){.products{grid-template-columns:1fr}.brands-row{gap:12px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img src="omega.png" alt="Omega Elektronik Palembang - logo" />
+      <h1>OMEGA ELEKTRONIK PALEMBANG</h1>
+      <p>Menjual berbagai macam produk elektronik & mesin — Kulkas, TV, Mesin Cuci, Speaker dll</p>
+    </div>
+    <div style="margin-top:12px;">
+      <div class="brands-row" aria-label="Official Brands">
+        <!-- logo src placeholders -->
+        <div class="brand-item"><img src="tcl.png.png" alt="TCL logo"></div>
+        <div class="brand-item"><img src="sharp.png" alt="Sharp logo"></div>
+        <div class="brand-item"><img src="lg.png.png" alt="LG logo"></div>
+        <div class="brand-item"><img src="polytron.png" alt="Polytron logo"></div>
+        <div class="brand-item"><img src="panasonic.png" alt="Panasonic logo"></div>
+        <div class="brand-item"><img src="daikin.png.png" alt="Daikin logo"></div>
+        <div class="brand-item"><img src="niko.png.png" alt="Niko logo"></div>
+        <div class="brand-item"><img src="huper.png.png" alt="Huper logo"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Promo Slider -->
+  <section class="slider" id="promoSlider">
+    <div class="slides" id="slides">
+      <div class="slide">
+        <div class="content">
+          <img src="xiaomi32.png" alt="Xiaomi 32" />
+          <div class="info">
+            <h2>Led TV Xiaomi 32" — Promo Spesial</h2>
+            <p>Harga: Rp1.900.000 — Google TV, garansi resmi.</p>
+            <a class="btn" href="#" onclick="openWhatsAppMsg('Xiaomi 32\" Google Tv - Promo Rp1.900.000')">Beli via WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="content">
+          <img src="tw8660.png" alt="Mesin Cuci Sanken 7kg" />
+          <div class="info">
+            <h2>Mesin Cuci Sanken 7kg</h2>
+            <p>Harga: Rp1.300.000 — Hemat & awet.</p>
+            <a class="btn" href="#" onclick="openWhatsAppMsg('Mesin Cuci Sanken 7kg - Promo Rp1.300.000')">Beli via WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="content">
+          <img src="1503.png" alt="Speaker Portable" />
+          <div class="info">
+            <h2>Speaker Portable</h2>
+            <p>Harga: Rp3.100.000 — Wireless Partybox listrik.</p>
+            <a class="btn" href="#" onclick="openWhatsAppMsg('Speaker Partybox - Promo Rp3.100.000')">Beli via WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-nav" id="sliderDots"></div>
+  </section>
+
+  <!-- Kategori -->
+  <section>
+    <div style="padding:8px 24px"><h2 style="margin:6px 0;text-align:center">Kategori</h2></div>
+    <div class="categories">
+      <div class="cat" data-cat="led-tv" onclick="filterCategory('led-tv')">
+        <img src="xiaomi32.png" alt="Led TV">
+        <h3>Led TV</h3>
+      </div>
+      <div class="cat" data-cat="mesin-cuci" onclick="filterCategory('mesin-cuci')">
+        <img src="tw8660.png"Mesin Cuci">
+        <h3>Mesin Cuci</h3>
+      </div>
+      <div class="cat" data-cat="speaker" onclick="filterCategory('speaker')">
+        <img src="1504.png" alt="Speaker Portable">
+        <h3>Speaker Portable</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products (will be filtered) -->
+  <main>
+    <div style="padding:8px 24px"><h2 style="margin:6px 0;text-align:center">Produk</h2></div>
+    <div class="products" id="products">
+      <!-- Led TV products (6 items -> 2 rows of 3) -->
+      <div class="product" data-cat="led-tv">
+        <img src="xiaomi32.png" alt="Xiaomi 32">
+        <div class="title">Xiaomi 32" Google Tv</div>
+        <div class="price">Rp1.900.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('Xiaomi 32\" Google Tv — Rp1.900.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="led-tv">
+        <img src="xiaomi43.png" alt="Xiaomi 43">
+        <div class="title">Xiaomi 43" Google Tv</div>
+        <div class="price">Rp3.200.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('Xiaomi 43\" Google Tv — Rp3.200.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="led-tv">
+        <img src="lg50.png" alt="LG 50">
+        <div class="title">LG 50" Smart Tv</div>
+        <div class="price">Rp8.000.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('LG 50\" Smart Tv — Rp8.000.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="led-tv">
+        <img src="lg65.png" alt="LG 65">
+        <div class="title">LG 65" Smart Tv</div>
+        <div class="price">Rp11.500.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('LG 65\" Smart Tv — Rp11.500.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="led-tv">
+        <img src="SHARP60.png" alt="Sharp 60">
+        <div class="title">Sharp 60" Google Tv</div>
+        <div class="price">Rp12.100.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('Sharp 60\" Google Tv — Rp12.100.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="led-tv">
+        <img src="TCL98.png" alt="TCL 98">
+        <div class="title">TCL 98" Google TV</div>
+        <div class="price">Rp25.000.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('TCL 98\" Google Tv — Rp25.000.000')">Pesan</a>
+      </div>
+
+      <!-- Mesin Cuci (6 items) -->
+      <div class="product" data-cat="mesin-cuci">
+        <img src="tw8660.png" alt="Sanken 8kg">
+        <div class="title">Sanken 8kg</div>
+        <div class="price">Rp1.400.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('Sanken 8kg — Rp1.400.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="mesin-cuci">
+        <img src="tw8660.png" alt="Sanken 7kg">
+        <div class="title">Sanken 7kg</div>
+        <div class="price">Rp1.200.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('Sanken 7kg — Rp1.200.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="mesin-cuci">
+        <img src="pwm7363.png" alt="Polytron 7kg">
+        <div class="title">Polytron 7kg</div>
+        <div class="price">Rp1.400.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('Polytron 7kg — Rp1.400.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="mesin-cuci">
+        <img src="pwm9076.png" alt="Polytron 9kg">
+        <div class="title">Polytron 9Kg</div>
+        <div class="price">Rp1.500.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('Polytron 9Kg — Rp1.500.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="mesin-cuci">
+        <img src="p1400.png" alt="LG 14kg">
+        <div class="title">LG 14Kg</div>
+        <div class="price">Rp3.000.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('LG 14Kg — Rp3.000.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="mesin-cuci">
+        <img src="p1600.png" alt="LG 16kg">
+        <div class="title">LG 16Kg</div>
+        <div class="price">Rp3.200.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('LG 16Kg — Rp3.200.000')">Pesan</a>
+      </div>
+
+      <!-- AC (4 items) -->
+      <div class="product" data-cat="ac">
+        <img src="5bey.png" alt="AC Sharp 1/2PK">
+        <div class="title">AC Sharp 1/2PK + Pasang</div>
+        <div class="price">Rp3.200.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('AC Sharp 1/2PK + Pasang — Rp3.200.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="ac">
+        <img src="5bey.png" alt="AC Sharp 1PK">
+        <div class="title">AC Sharp 1PK + Pasang</div>
+        <div class="price">Rp3.500.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('AC Sharp 1PK + Pasang — Rp3.500.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="ac">
+        <img src="09.png" alt="AC LG 1/2PK">
+        <div class="title">AC LG 1/2PK + Pasang</div>
+        <div class="price">Rp3.000.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('AC LG 1/2PK + Pasang — Rp3.000.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="ac">
+        <img src="15av.png" alt="AC Daikin 1/2PK">
+        <div class="title">AC Daikin 1/2PK + Pasang</div>
+        <div class="price">Rp4.100.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('AC Daikin 1/2PK + Pasang — Rp4.100.000')">Pesan</a>
+      </div>
+
+      <!-- Speaker (6 items) -->
+      <div class="product" data-cat="speaker">
+        <img src="1503.png" alt="Niko PT1503">
+        <div class="title">Speaker Niko 15" PT1503</div>
+        <div class="price">Rp1.300.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('Speaker Niko PT1503 — Rp1.300.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="speaker">
+        <img src="1504.png" alt="Niko PT1504">
+        <div class="title">Speaker Niko 15" PT1504</div>
+        <div class="price">Rp1.500.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('Speaker Niko PT1504 — Rp1.500.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="speaker">
+        <img src="152.png" alt="Noise 899D 15">
+        <div class="title">Speaker Noise 15" 899D</div>
+        <div class="price">Rp1.900.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('Speaker Noise 15\" 899D — Rp1.900.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="speaker">
+        <img src="122.png" alt="Noise 899D 12">
+        <div class="title">Speaker Noise 12" 899D</div>
+        <div class="price">Rp2.400.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('Speaker Noise 12\" 899D — Rp1.500.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="speaker">
+        <img src="js10.png" alt="Huper JS10">
+        <div class="title">Speaker Huper 15" JS10</div>
+        <div class="price">Rp5.700.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('Speaker Huper 15\" JS10 — Rp5.700.000')">Pesan</a>
+      </div>
+      <div class="product" data-cat="speaker">
+        <img src="baretone.png" alt="Baretone MAX15">
+        <div class="title">Speaker Baretone 15" MAX15MHWR</div>
+        <div class="price">Rp2.950.000</div>
+        <a class="btn" href="#" onclick="openWhatsAppMsg('Speaker Baretone 15\" MAX15MHWR — Rp2.950.000')">Pesan</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Added Value -->
+  <section class="added">
+    <h2>ADDED VALUE</h2>
+    <div class="items">
+      <div class="item">
+        <img src="garansi.png" alt="warranty">
+        <h3>14 DAYS WARRANTY RETURN & EXCHANGE</h3>
+        <p>Penggantian produk Audio, Video & Home Appliances karena kerusakan selama 14 hari sejak pembelian.</p>
+      </div>
+      <div class="item">
+        <img src="free.png" alt="delivery">
+        <h3>FREE DELIVERY & INSTALLATION</h3>
+        <p>Layanan bebas biaya pengiriman dan pemasangan langsung ke alamat tujuan.</p>
+      </div>
+      <div class="item">
+        <img src="premium.png" alt="premium">
+        <h3>PREMIUM SERVICES</h3>
+        <p>Reparasi produk, pengiriman cepat, tambahan garansi & asuransi, gift card dan lainnya.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payments & marketplaces -->
+  <section>
+    <div style="text-align:center;padding:8px"><h3>METODE PEMBAYARAN</h3></div>
+    <div class="payments">
+      <img src="bca.png" alt="BCA"><img src="mandiri.png" alt="Mandiri"><img src="bsi.png"BSI">
+      <img src="dana.png" alt="DANA"><img src="gopay.png" alt="GOPAY"><img src="sbank.png" alt="Seabank"><img src="spay.png" alt="ShopeePay">
+    </div>
+    <div style="text-align:center;padding:8px"><h3>Pembelian Online</h3></div>
+    <div class="marketplace">
+      <img src="shopee.png" alt="Shopee"><img src="tokopedia.png" alt="Tokopedia"><img src="lazada.png" alt="Lazada"><img src="tiktok.png" alt="Tiktok Shop"><img src="web." alt="Website Omega">
+    </div>
+  </section>
+
+  <footer>
+    <div class="contact">
+      <h4>Customer Service</h4>
+      <p>Jam Operasional: 06:30 - 19:00</p>
+      <p>WhatsApp Admin 1: 0896-4913-0717</p>
+      <p>WhatsApp Admin 2: 0895-4040-19535</p>
+      <p>Instagram: @Omegaelektronikpalembang</p>
+      <p>Lokasi: Jl. Beringin Jenggut No.D2, 16 Ilir, Kec. Ilir Tim. I, Kota Palembang, Sumatera Selatan 30122</p>
+    </div>
+    <div style="max-width:420px">
+      <h4>Pilihan Untuk Kamu</h4>
+      <ul>
+        <li>Xiaomi 32" Google Tv</li>
+        <li>AC Sharp 1/2PK + Pasang</li>
+        <li>Mesin cuci Polytron 9Kg</li>
+        <li>Speaker Huper 15"</li>
+      </ul>
+      <p style="font-size:12px;color:rgba(11,36,51,0.6)">Setiap klik product langsung hubungkan ke WhatsApp Admin.</p>
+    </div>
+  </footer>
+
+  <script>
+    // WhatsApp helpers
+    const WA1 = '6289649130717'; // Admin 1
+    const WA2 = '62895404019535'; // Admin 2 (as provided)
+    function openWhatsAppMsg(product){
+      const text = encodeURIComponent('Halo Admin, saya berminat membeli: ' + product + '\nMohon info ketersediaan & harga final.');
+      // prefer admin1, open in new tab
+      const url = 'https://wa.me/' + WA1 + '?text=' + text;
+      window.open(url,'_blank');
+    }
+
+    // Simple slider
+    (function(){
+      const slides = document.getElementById('slides');
+      const dotsWrap = document.getElementById('sliderDots');
+      const total = slides.children.length;
+      let idx = 0;
+      for(let i=0;i<total;i++){
+        const d = document.createElement('div'); d.className='dot'; d.dataset.i=i; d.onclick=()=>go(i); dotsWrap.appendChild(d);
+      }
+      function go(i){idx=i; slides.style.transform='translateX('+(-100*i)+'%)'; update();}
+      function update(){Array.from(dotsWrap.children).forEach((dot,i)=>dot.classList.toggle('active',i===idx));}
+      go(0);
+      setInterval(()=>{idx=(idx+1)%total; go(idx);},5000);
+    })();
+
+    // Category filter
+    function filterCategory(slug){
+      const products = document.querySelectorAll('.product');
+      products.forEach(p=>{ if(p.dataset.cat===slug) p.style.display='block'; else p.style.display='none'; });
+      // if none visible, show message
+    }
+
+    // On load show all products initially
+    window.addEventListener('DOMContentLoaded',()=>{
+      document.querySelectorAll('.product').forEach(p=>p.style.display='block');
+    });
+  </script>
+</body>
+</html>
